@@ -1,41 +1,32 @@
 import './css/styles.css';
+import debounce from 'lodash.debounce';
+import { fetchCountries } from './js/fetchCountries';
+import { renderCountryList } from './js/renderCountryList';
+import { refs } from './js/refs';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const DEBOUNCE_DELAY = 300;
 
-const input = document.querySelector('#search-box');
-const countryList = document.querySelector('.country-list');
+// const input = document.querySelector('#search-box');
+// const countryList = document.querySelector('.country-list');
 // const countryInfo = document.querySelector('.country-info');
 
-input.addEventListener('input', () => {
-  fetchCountry(input.value)
+refs.input.addEventListener('input', debounce(onInputFetch, DEBOUNCE_DELAY));
+
+// onInputFetch
+function onInputFetch(event) {
+  fetchCountries(event.target.value.trim())
     .then(countries => {
+      console.log(countries);
       if (countries.length === 1) {
         countries.map(country => {
-          //   renderCountryList(country.name);
-          console.log('country', country.name);
+          renderCountryList(country.name);
+          console.log('назва КРаїни', country.name);
         });
       } else if (countries.length <= 10) {
-        console.log(countries);
+        console.log('якщо більше одноЇ країни ', countries);
       }
     })
     .catch(error => console.log(error));
   // .finally((input.value = ''));
-});
-
-function fetchCountry(name) {
-  return fetch(`https://restcountries.com/v3.1/name/${name}`).then(response => {
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    return response.json();
-  });
 }
-
-// function renderCountryList(country) {
-//   console.log(country);
-//   const markup = `<li>
-//           <p><b>Country</b>: ${country.official}</p>
-//         </li>`;
-
-//   countryList.innerHTML = markup;
-// }
