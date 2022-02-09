@@ -9,10 +9,11 @@ import { cleanRender } from "./js/cleanRender";
 
 const DEBOUNCE_DELAY = 300;
 refs.input.addEventListener('input', debounce(onInputFetch, DEBOUNCE_DELAY));
-cleanRender();
+
 
 // onInputFetch
 function onInputFetch(event) {
+  cleanRender();
   const name = event.target.value.trim();
   if (name.length ===0) { 
         return;
