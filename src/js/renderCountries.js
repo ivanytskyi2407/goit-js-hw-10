@@ -4,10 +4,10 @@ import { cleanRender } from "./cleanRender";
 export function renderCountries(countries) {  
       if (countries.length > 2 && countries.length <= 10) {
           cleanRender()
-          const markupCountrylist = countries.map(country => {
+          const markupCountrylist = countries.map(({ name, flags}) => {
     return `<li class="country-list_item">
-            <img class="country-list_img" src="${country.flags.svg}" />
-            <p style="font-size: 20px;font-weight: 600;">${country.name.common}</p>
+            <img class="country-list_img" src="${flags.svg}" alt="${name.common}"/>
+            <p style="font-size: 20px;font-weight: 600;">${name.common}</p>
             </li>`}).join("");
             refs.countryList.insertAdjacentHTML('afterbegin',markupCountrylist);
       }
