@@ -66,7 +66,7 @@ module.exports={version:"0.26.0"};
 },{"./utils":"S1cf","./helpers/bind":"EDTP","./core/Axios":"OvAf","./core/mergeConfig":"OHvn","./defaults":"BXyq","./cancel/Cancel":"mIKj","./cancel/CancelToken":"tsWd","./cancel/isCancel":"V30M","./env/data":"xNqU","./helpers/spread":"X8jb","./helpers/isAxiosError":"wICU"}],"dZBD":[function(require,module,exports) {
 module.exports=require("./lib/axios");
 },{"./lib/axios":"nUiQ"}],"irxn":[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.fetchCountries=o;var e=t(require("axios"));function t(e){return e&&e.__esModule?e:{default:e}}function o(t){return e.default.get(`https://restcountries.com/v3.1/name/${t}?fields=name,capital,population,flags,languages`).then(e=>(console.log(e),e.data))}
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.fetchCountries=a;var e=t(require("axios"));function t(e){return e&&e.__esModule?e:{default:e}}function a(t){return e.default.get(`https://restcountries.com/v3.1/name/${t}?fields=name,capital,population,flags,languages`).then(e=>e.data)}
 },{"axios":"dZBD"}],"VyiV":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.refs=void 0;const e={input:document.querySelector("#search-box"),countryList:document.querySelector(".country-list"),countryInfo:document.querySelector(".country-info")};exports.refs=e;
 },{}],"N5R3":[function(require,module,exports) {
@@ -80,4 +80,4 @@ var t,o=arguments[3];!function(o,i){"function"==typeof t&&t.amd?t([],function(){
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./css/styles.css");var e=u(require("lodash.debounce")),t=require("./js/fetchCountries"),r=require("./js/renderCountries"),n=require("./js/refs"),i=require("notiflix/build/notiflix-notify-aio"),s=require("./js/cleanRender");function u(e){return e&&e.__esModule?e:{default:e}}const o=300;function a(e){(0,s.cleanRender)();const n=e.target.value.trim();0!==n.length&&(1!==n.length?(0,t.fetchCountries)(n).then(e=>{(0,r.renderCountries)(e)}).catch(()=>i.Notify.failure("Oops, there is not country with that name.")):i.Notify.info("Too many matches found. Please enter a more specific name."))}n.refs.input.addEventListener("input",(0,e.default)(a,300));
 },{"./css/styles.css":"krre","lodash.debounce":"PZFh","./js/fetchCountries":"irxn","./js/renderCountries":"QGfk","./js/refs":"VyiV","notiflix/build/notiflix-notify-aio":"MeeU","./js/cleanRender":"N5R3"}]},{},["Focm"], null)
-//# sourceMappingURL=/goit-js-hw-10/src.44c20164.js.map
+//# sourceMappingURL=/goit-js-hw-10/src.3c5b7788.js.map
